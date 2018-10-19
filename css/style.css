@@ -1,170 +1,238 @@
-*, *:before, *:after {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+@use postcss-cssnext;
+
+/* config.css */
+
+:root {
+  --baseColor: #606468;
+}
+
+/* helpers/align.css */
+
+.align {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* helpers/grid.css */
+
+:root {
+  --gridMaxWidth: 20rem;
+  --gridWidth: 90%;
+}
+
+.grid {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--gridMaxWidth);
+  width: var(--gridWidth);
+}
+
+/* helpers/hidden.css */
+
+.hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* helpers/icon.css */
+
+:root {
+  --iconFill: var(--baseColor);
+}
+
+.icons {
+  display: none;
+}
+
+.icon {
+  display: inline-block;
+  fill: var(--iconFill);
+  font-size: 1rem;
+  height: 1em;
+  vertical-align: middle;
+  width: 1em;
+}
+
+/* layout/base.css */
+
+:root {
+  --htmlFontSize: 100%;
+
+  --bodyBackgroundColor: #2c3338;
+  --bodyColor: var(--baseColor);
+  --bodyFontFamily: 'Open Sans';
+  --bodyFontFamilyFallback: sans-serif;
+  --bodyFontSize: 0.875rem;
+  --bodyFontWeight: 400;
+  --bodyLineHeight: 1.5;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: var(--htmlFontSize);
+  height: 100%;
 }
 
 body {
-	font-family: Helvetica Neue;
-	color:#2c2727;
+  background-color: var(--bodyBackgroundColor);
+  color: var(--bodyColor);
+  font-family: var(--bodyFontFamily), var(--bodyFontFamilyFallback);
+  font-size: var(--bodyFontSize);
+  font-weight: var(--bodyFontWeight);
+  height: 100%;
+  line-height: var(--bodyLineHeight);
+  margin: 0;
+  min-height: 100vh;
 }
 
-/* <--! Menu Superior --> */
-nav {	
-	position: fixed;
-	top: 0;
-	width: 100%;	
+/* modules/anchor.css */
+
+:root {
+  --anchorColor: #eee;
 }
 
-.navbar-items {
-	text-align: center;
-	padding: 1em 0;
+a {
+  color: var(--anchorColor);
+  outline: 0;
+  text-decoration: none;
 }
 
-.navbar-items .links {
-	font-size: 33px;
-	font-family: Helvetica Neue;
-	color: #9f283e;
-	text-decoration: none;
+a:focus,
+a:hover {
+  text-decoration: underline;
 }
 
-.navbar-items .link-img:hover{
-	color:#14171e;
-	width:3em;
+/* modules/form.css */
+
+:root {
+  --formFieldMargin: 0.875rem;
 }
 
-
-/* <--! Home --> */
-
-
-#home {
-	height: 664px;
-	background-image: url(../IMGS/imagem1.jpg);
-    width: 1340px;
-    
+input {
+  background-image: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  transition: background-color 0.3s;
 }
 
-.logo{
-	margin-top:120px;
-	margin-left:27%;
-	width:600px;
-	
+input[type='submit'] {
+  cursor: pointer;
 }
 
-.rede-social{
-	margin-left: 220px;
+.form {
+  margin: calc(var(--formFieldMargin) * -1);
 }
 
-.bg-home{
-	position:relative;
-	width:100%;
-	
+.form input[type='password'],
+.form input[type='text'],
+.form input[type='submit'] {
+  width: 100%;
 }
 
-.imgs-container {
-	width: 80%;
-	margin: 2em auto 5em;
-	padding: 0.5em;
-	display: flex;
-	height: 6em;
-	align-items: center;
-	justify-content: space-between;
-	margin-bottom: 30px;
-	
+.form__field {
+  display: flex;
+  margin: var(--formFieldMargin);
 }
 
-.imgs-container img {
-	display: block;
-	width: 15%;
+.form__input {
+  flex: 1;
 }
 
+/* modules/login.css */
 
+:root {
+  --loginBorderRadus: 0.25rem;
+  --loginColor: #eee;
 
-/* <--! Sobre --> */
+  --loginInputBackgroundColor: #3b4148;
+  --loginInputHoverBackgroundColor: #434a52;
 
-.perfil-section {
-	min-height: 100vh;
-	display: flex;
-	align-items: center;
+  --loginLabelBackgroundColor: #363b41;
+
+  --loginSubmitBackgroundColor: #ea4c88;
+  --loginSubmitColor: #eee;
+  --loginSubmitHoverBackgroundColor: #d44179;
 }
 
-.page-container {
-	width: 100%;
-	margin: 0 auto;
+.login {
+  color: var(--loginColor);
 }
 
-#sobre {
-	background-color: #a97464;
-
+.login label,
+.login input[type='text'],
+.login input[type='password'],
+.login input[type='submit'] {
+  border-radius: var(--loginBorderRadus);
+  padding: 1rem;
 }
 
-.perfil-section img {
-	display: block;
-	
-	border: 2px solid black;
-	
+.login label {
+  background-color: var(--loginLabelBackgroundColor);
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
-
-.perfil-section .text {
-	width: 60%;
-	padding: 2.5em;
-	text-align: center;
+.login input[type='password'],
+.login input[type='text'] {
+  background-color: var(--loginInputBackgroundColor);
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
 }
 
-/* <--! Portifólio --> */
-
-#portifolio {
-    width: 100%;
-    margin: 0 auto;
-	height: 110vh;
+.login input[type='password']:focus,
+.login input[type='password']:hover,
+.login input[type='text']:focus,
+.login input[type='text']:hover {
+  background-color: var(--loginInputHoverBackgroundColor);
 }
 
-.carousel-format{
-    width: 1350px;
-    height: 600px;
-    margin: 100px 0 0 0;
-}
-/* <--! Rodapé --> */
-
-footer {
-	background-color: #888;
-	text-align: center;
-	padding: 0.5em 0;
-	font-size: 1.5em;
+.login input[type='submit'] {
+  background-color: var(--loginSubmitBackgroundColor);
+  color: var(--loginSubmitColor);
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
-hr {
-	background-color: #888
-}
-.selector-for-some-widget {
-  box-sizing: content-box;
-}
-/* <--! Orcamento --> */
-.facaseuorcamento{
-    margin: 20px auto;
-    min-height: 100vh;
-	padding: 1px;
-}
-/* <--! Titulo do Form --> */
-.titfaca{
-     text-align: center;
-    margin-bottom: 125px;
-    margin-top: 50px;
-}
-.contact{
-    margin: 0 0 0 0;
-}
-.esp{
-    margin-bottom: 10px;
-}
-.hrr{
-    margin: 0 0 0 10px;
-}
-.par{
-         text-align: center;
-   @include text-shadow(1px 1px 0 rgba(white, 1));
+.login input[type='submit']:focus,
+.login input[type='submit']:hover {
+  background-color: var(--loginSubmitHoverBackgroundColor);
 }
 
+/* modules/text.css */
 
+:root {
+  --paragraphMarginBottom: 1.5rem;
+  --paragraphMarginTop: 1.5rem;
+}
 
+p {
+  margin-bottom: var(--paragraphMarginBottom);
+  margin-top: var(--paragraphMarginTop);
+}
+
+.text--center {
+  text-align: center;
+}
+
+.format-pg{
+    margin-top: 15%;
+    text-align: center;
+}
