@@ -1,0 +1,170 @@
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+body {
+	font-family: Helvetica Neue;
+	color:#2c2727;
+}
+
+/* <--! Menu Superior --> */
+nav {	
+	position: fixed;
+	top: 0;
+	width: 100%;	
+}
+
+.navbar-items {
+	text-align: center;
+	padding: 1em 0;
+}
+
+.navbar-items .links {
+	font-size: 33px;
+	font-family: Helvetica Neue;
+	color: #9f283e;
+	text-decoration: none;
+}
+
+.navbar-items .link-img:hover{
+	color:#14171e;
+	width:3em;
+}
+
+
+/* <--! Home --> */
+
+
+#home {
+	height: 664px;
+	background-image: url(../IMGS/imagem1.jpg);
+    width: 1340px;
+    
+}
+
+.logo{
+	margin-top:120px;
+	margin-left:27%;
+	width:600px;
+	
+}
+
+.rede-social{
+	margin-left: 220px;
+}
+
+.bg-home{
+	position:relative;
+	width:100%;
+	
+}
+
+.imgs-container {
+	width: 80%;
+	margin: 2em auto 5em;
+	padding: 0.5em;
+	display: flex;
+	height: 6em;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 30px;
+	
+}
+
+.imgs-container img {
+	display: block;
+	width: 15%;
+}
+
+
+
+/* <--! Sobre --> */
+
+.perfil-section {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+}
+
+.page-container {
+	width: 100%;
+	margin: 0 auto;
+}
+
+#sobre {
+	background-color: #a97464;
+
+}
+
+.perfil-section img {
+	display: block;
+	
+	border: 2px solid black;
+	
+}
+
+
+.perfil-section .text {
+	width: 60%;
+	padding: 2.5em;
+	text-align: center;
+}
+
+/* <--! Portifólio --> */
+
+#portifolio {
+    width: 100%;
+    margin: 0 auto;
+	height: 110vh;
+}
+
+.carousel-format{
+    width: 1350px;
+    height: 600px;
+    margin: 100px 0 0 0;
+}
+/* <--! Rodapé --> */
+
+footer {
+	background-color: #888;
+	text-align: center;
+	padding: 0.5em 0;
+	font-size: 1.5em;
+}
+
+hr {
+	background-color: #888
+}
+.selector-for-some-widget {
+  box-sizing: content-box;
+}
+/* <--! Orcamento --> */
+.facaseuorcamento{
+    margin: 20px auto;
+    min-height: 100vh;
+	padding: 1px;
+}
+/* <--! Titulo do Form --> */
+.titfaca{
+     text-align: center;
+    margin-bottom: 125px;
+    margin-top: 50px;
+}
+.contact{
+    margin: 0 0 0 0;
+}
+.esp{
+    margin-bottom: 10px;
+}
+.hrr{
+    margin: 0 0 0 10px;
+}
+.par{
+         text-align: center;
+   @include text-shadow(1px 1px 0 rgba(white, 1));
+}
+
+
+
