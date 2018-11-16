@@ -1,3 +1,26 @@
+<?php
+session_start();
+    $daniel = mysqli_connect("localhost","root","","iz4you");
+    if(mysqli_connect_errno()){
+        die("Conexao Falhou: ". mysqli_connect_errno);
+        
+    }
+   if ( isset($_POST["username"]) ) {
+   		$username = $_POST["username"];
+   		$password = $_POST["password"];
+
+   		$login = "SELECT usuarioID, Nome, IzCoins, Curso FROM usuario WHERE cpd = '{$username}' and senha = '{$password}' limit 1";
+   		$acesso = mysqli_query($daniel, $login);
+   		$row = mysqli_num_rows($acesso);
+   				if($row == 1){
+   					$_SESSION['usuario'] = $username;
+   					header('Location:/IZ4U/HTML/Perfil.php');
+   					exit();
+   				}
+   		}	
+
+?> 
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -20,7 +43,7 @@
 				  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 				    <ul class="navbar-nav mr-auto">
 				      <li class="nav-item active">
-				        <a class="nav-link" href="Perfil.html">Perfil<span class="sr-only">(current)</span></a>
+				        <a class="nav-link" href="Perfil.php">Perfil<span class="sr-only">(current)</span></a>
 				      </li>
 				      <li class="nav-item">
 				        <a class="nav-link" href="Rank.html">Ranking</a>
@@ -38,7 +61,7 @@
 				        </div>
 				      </li>
 				      <li class="nav-item">
-				        <a class="nav-link disabled" href="Cadastro.html">Cadastro</a>
+				        <a class="nav-link disabled" href="Cadastro.php">Cadastro</a>
 				      </li>
 				    </ul>
 				  </div>
@@ -46,7 +69,7 @@
 	<div class="format-pg">
 	  <div class="grid">
 
-	    <form action="https://httpbin.org/post" method="POST" class="form login">
+	    <form action="" method="POST" class="form login">
 
 	      <div class="form__field">
 	        <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">CPD/MATRICULA</span></label>
@@ -62,8 +85,9 @@
 	        <input type="submit" value="Sign In">
 	      </div>
 
-	    </form>
 
+	    </form>
+		
 	    <p class="text--center">Sem Cadastro? <a href="Cadastro.html">Cadastre</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
 
 	  </div>
@@ -71,3 +95,7 @@
 	  </div>
 </body>
 </html>
+<?php
+		mysqli_close($daniel);
+
+?>

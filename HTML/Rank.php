@@ -1,14 +1,26 @@
+<?php
+    $daniel = mysqli_connect("localhost","root","1234","iz4you");
+    if(mysqli_connect_errno()){
+        die("Conexao Falhou: ". mysqli_connect_errno);
+        
+    }
+		$cursos = "SELECT * FROM curso";
+		$listaCursos = mysqli_query($daniel, $cursos);
+		if(!$listaCursos){
+			die("Sem cursos");
+		}
+?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Perfil</title>
+	<title>Rank</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="../css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
-
 </head>
 <body>
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -38,23 +50,31 @@
 				        </div>
 				      </li>
 				      <li class="nav-item">
-				        <a class="nav-link disabled" href="Cadastro.html">Cadastro</a>
+				        <a class="nav-link disabled" href="Cadastro.php">Cadastro</a>
 				      </li>
 				    </ul>
 				    <form class="form-inline my-2 my-lg-0">
 				      <input class="form-control mr-sm-2" type="search" placeholder="Busca" aria-label="Search">
-				      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" href="login.html">ENTRE!</button>
+				      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="login.html">Entre</a></button>
 				    </form>
 				  </div>
 				</nav>
-	<h3>Nome:</h3>
-	<h3>Código da faculdade:</h3>
-	<h3>Curso:</h3>
-	<h3>Semestre:</h3>
-	<h3>IZCoins:</h3>
-	<h3>IZCoins totais:</h3>
-	<h3>Número de perguntas feitas:</h3>
-	<h3>Número de respostas lançadas:</h3>
-	<h3>Área de preferencia:</h3>
+<div>
+		<form class="form" method="post">
+		<select id="curso">
+			<label for="cursos">Cursos</label>
+			<?php
+			while ($linha = mysqli_fetch_assoc($listaCursos)) {
+			?>
+			<option value="<?php echo $linha['CursoID']?>"></option>
+				<?php echo utf8_encode($linha['Nome'])?>
+			<?php
+
+		}
+			?>
+			<input type="submit" class="submit" value="Ver Rank">
+		</select>
+		</form>
+	</div>
 </body>
 </html>
