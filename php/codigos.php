@@ -27,7 +27,7 @@
     	$this->semestre = $_semestre;
     	$this->email = $_email;
     	}
-    	public function EnvCadastro(){
+    	public function cCadastro(){
     		$testecpd = "SELECT * from usuario where cpd = $this->cpd";
     		$tst = mysqli_query($conexao, $testecpd);
     		$tst = mysqli_fetch_assoc($tst);
@@ -36,12 +36,13 @@
     		}else{
     			$inserir = "INSERT INTO usuario (CPD, Nome, CursoID, Semestre, Telefone, Email, Senha) VALUES ($this->cpd, $this->nome, $this->idcurso, $this->semestre, $this->telefone, $this->email, md5($this->senha)";
     		}
-			$operacao_inser = mysqli_query($conexao, $inserir);
-				if(!$operacao_inser){
-					die("Não foi efetuado a inserção");
-				}
     	}
-
+        public function envCadastro(){
+            $operacao_inser = mysqli_query($conexao, $inserir);
+                if(!$operacao_inser){
+                    die("Não foi efetuado a inserção");
+                }
+        }
 
 
     }
