@@ -1,7 +1,7 @@
 /*
  Navicat MySQL Data Transfer
 
- Source Server         : ambr
+ Source Server         : IZ4YOU
  Source Server Type    : MySQL
  Source Server Version : 100136
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 100136
  File Encoding         : 65001
 
- Date: 16/11/2018 11:39:59
+ Date: 17/11/2018 18:42:10
 */
 
 SET NAMES utf8mb4;
@@ -22,11 +22,11 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `curso`;
 CREATE TABLE `curso`  (
-  `CursoID` int(5) NOT NULL,
+  `CursoID` int(5) NOT NULL AUTO_INCREMENT,
   `Nome` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `TempoCursoAnos` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`CursoID`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for duvida
@@ -47,7 +47,10 @@ DROP TABLE IF EXISTS `pergunta`;
 CREATE TABLE `pergunta`  (
   `idPergunta` int(11) NOT NULL AUTO_INCREMENT,
   `Descricao` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  PRIMARY KEY (`idPergunta`) USING BTREE
+  `idUsuario` int(11) NOT NULL,
+  PRIMARY KEY (`idPergunta`) USING BTREE,
+  INDEX `idUsuario`(`idUsuario`) USING BTREE,
+  CONSTRAINT `idUsuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`usuarioID`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -70,7 +73,6 @@ DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario`  (
   `CPD` int(6) NOT NULL,
   `Nome` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `Curso` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `IDCurso` int(5) NULL DEFAULT NULL,
   `Semestre` int(2) NOT NULL,
   `Telefone` varchar(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -78,9 +80,12 @@ CREATE TABLE `usuario`  (
   `Senha` varchar(12) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `IzCoins` int(255) NOT NULL,
   `usuarioID` int(11) NOT NULL AUTO_INCREMENT,
+  `CursoID` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`usuarioID`, `CPD`) USING BTREE,
   INDEX `IDCurso`(`IDCurso`) USING BTREE,
-  CONSTRAINT `IDCurso` FOREIGN KEY (`IDCurso`) REFERENCES `curso` (`CursoID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+  INDEX `usuarioID`(`usuarioID`) USING BTREE,
+  INDEX `CusoID`(`CursoID`) USING BTREE,
+  CONSTRAINT `CusoID` FOREIGN KEY (`CursoID`) REFERENCES `curso` (`CursoID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 SET FOREIGN_KEY_CHECKS = 1;

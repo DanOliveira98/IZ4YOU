@@ -1,6 +1,5 @@
 <?php
-	include('../php/sessao.php');
-	include ('..php/login.php');
+	include ('../php/login.php');
 ?> 
 
 <!DOCTYPE html>
@@ -15,7 +14,7 @@
 	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 </head>
-<body>
+<body class="cor-pg">
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				  <a class="navbar-brand" href="index.html">Home</a>
 				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
