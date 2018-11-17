@@ -1,24 +1,6 @@
 <?php
-session_start();
-    $daniel = mysqli_connect("localhost","root","","iz4you");
-    if(mysqli_connect_errno()){
-        die("Conexao Falhou: ". mysqli_connect_errno);
-        
-    }
-   if ( isset($_POST["username"]) ) {
-   		$username = $_POST["username"];
-   		$password = $_POST["password"];
-
-   		$login = "SELECT usuarioID, Nome, IzCoins, Curso FROM usuario WHERE cpd = '{$username}' and senha = '{$password}' limit 1";
-   		$acesso = mysqli_query($daniel, $login);
-   		$row = mysqli_num_rows($acesso);
-   				if($row == 1){
-   					$_SESSION['usuario'] = $username;
-   					header('Location:/IZ4U/HTML/Perfil.php');
-   					exit();
-   				}
-   		}	
-
+	include('../php/sessao.php');
+	include ('..php/login.php');
 ?> 
 
 <!DOCTYPE html>
@@ -42,23 +24,8 @@ session_start();
 
 				  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 				    <ul class="navbar-nav mr-auto">
-				      <li class="nav-item active">
-				        <a class="nav-link" href="Perfil.php">Perfil<span class="sr-only">(current)</span></a>
-				      </li>
 				      <li class="nav-item">
 				        <a class="nav-link" href="Rank.html">Ranking</a>
-				      </li>
-				      <li class="nav-item dropdown">
-				        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				          Duvidas
-				        </a>
-				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				          <a class="dropdown-item" href="lanc_duvida.html">Lançar Duvida</a>
-				          <a class="dropdown-item" href="duv_lanc.html">Duvidas Lancadas</a>
-				          <a class="dropdown-item" href="resp_lanc.html">Respostas Lancadas</a>
-				          <div class="dropdown-divider"></div>
-				          <a class="dropdown-item" href="Resul_busc.html">Procurar Duvidas</a>
-				        </div>
 				      </li>
 				      <li class="nav-item">
 				        <a class="nav-link disabled" href="Cadastro.php">Cadastro</a>
@@ -95,7 +62,3 @@ session_start();
 	  </div>
 </body>
 </html>
-<?php
-		mysqli_close($daniel);
-
-?>

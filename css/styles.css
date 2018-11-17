@@ -1,6 +1,6 @@
 /*<!-- Cor NavBar -->*/
 .cor-nav{
-  background: red;
+  background:  #068587;
   width: 100%;
   height: 50px;
 }
@@ -10,7 +10,11 @@
   min-width: 100%; 
   width: 100% !important; 
   height: 100% !important;
-  background: #ff6004;
+  background:#112F41;
+}
+.cor-bot{
+  background: #4FB99F;
+
 }
 .corpo{
 	margin-left: 35%;

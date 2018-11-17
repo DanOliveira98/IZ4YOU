@@ -1,48 +1,29 @@
 <?php
-	$conexao = mysqli_connect("localhost","root","1234","iz4you"); 
-	if(mysqli_connect_errno()){
-        die("Conexao Falhou: ". mysqli_connect_errno);  
-    }
-
-    class Cadastro{
-    	private $cpd;
-    	private $nome;
-    	private $telefone;
-    	private $idcurso;
-    	private $email;
-    	private $senha;
-    	private $conf_senha;
-    	private $semestre;
-    	public function RecCadastrar($_cpd, $_nome, $_idcurso, $_semestre, $_telefone, $_email, $_senha, $_conf_senha){
-    	if ($_senha == $_conf_senha) {
-    		$this->senha = $_senha;
-    	}else{
-    		die();
-    		$conf = ("Senhas não conferem!");
-    	}
-    	$this->cpd = $_cpd;
-    	$this->nome = $_nome;
-    	$this->idcurso = $_idcurso;
-    	$this->telefone = $_telefone;
-    	$this->semestre = $_semestre;
-    	$this->email = $_email;
-    	}
-    	public function cCadastro(){
-    		$testecpd = "SELECT * from usuario where cpd = $this->cpd";
-    		$tst = mysqli_query($conexao, $testecpd);
-    		$tst = mysqli_fetch_assoc($tst);
-    		if($this->cpd = $tst['cpd']){
-    			die("CPD já Utilizado!");
-    		}else{
-    			$inserir = "INSERT INTO usuario (CPD, Nome, CursoID, Semestre, Telefone, Email, Senha) VALUES ($this->cpd, $this->nome, $this->idcurso, $this->semestre, $this->telefone, $this->email, md5($this->senha)";
-    		}
-    	}
-        public function envCadastro(){
-            $operacao_inser = mysqli_query($conexao, $inserir);
-                if(!$operacao_inser){
-                    die("Não foi efetuado a inserção");
-                }
+        include ('conexao.php');
+        $cpd = $_POST['cpd'];
+        $idcurso = $_POST['Curso'];
+        $telefone = $_POST['Telefone'];
+        $semestre = $_POST['semestre'];
+        $email = $_POST['Email'];
+        $_senha = $_POST['Senha'];      
+        $nome = $_POST['nome'];
+    	$senha = md5($_senha);
+        $test = "SELECT * FROM usuario where CPD = $cpd";
+        $tst = mysqli_query($co, $test);
+        $tst = mysqli_fetch_assoc($tst);
+        if ($tst['CPD'] == $cpd) {
+            echo ("<script>alert('CPD JÁ UTILIZADO!!');</script>");
+            echo ("<script>alert('Cadastro Não Efetuado, tente novamente!!'); location.href='../html/cadastro.php';</script>");
+        }else{
+        $inserir = "INSERT INTO usuario(CPD, Nome, IDCurso, Semestre, Telefone, Email, Senha) VALUES ($cpd, '$nome', $idcurso, $semestre, '$telefone', '$email', '$senha')";
+        $env = mysqli_query($co, $inserir) or die("erro");
+            if(!$env){
+                        echo ("<script>alert('Cadastro Não Efetuado, tente novamente!!'); location.href='../html/cadastro.php';</script>");
+            
+            }else{
+                echo "string";
+                    echo ("<script>alert('Cadastro Efetuado com Sucesso!!'); location.href='../html/Index.html';</script>");
+            }
         }
 
-
-    }
+?>

@@ -1,12 +1,6 @@
 <?php
 	session_start();
-	$conec = mysqli_connect("localhost","root","","iz4you"); 
-	if(mysqli_connect_errno()){
-        die("Conexao Falhou: ". mysqli_connect_errno);  
-    }	
-    $usuario = $_SESSION['usuario'];
-    $mysqli = "SELECT * From usuario where cpd = $usuario";
-    
+    include('../php/perfil.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -47,9 +41,6 @@
 				          <a class="dropdown-item" href="Resul_busc.html">Procurar Duvidas</a>
 				        </div>
 				      </li>
-				      <li class="nav-item">
-				        <a class="nav-link disabled" href="Cadastro.php">Cadastro</a>
-				      </li>
 				    </ul>
 				    <form class="form-inline my-2 my-lg-0">
 				      <input class="form-control mr-sm-2" type="search" placeholder="Busca" aria-label="Search">
@@ -58,10 +49,6 @@
 				  </div>
 				</nav>
 <div class="container">
-									<?php 
-									$nom = mysqli_query($conec, $mysqli); 
-									$user = mysqli_fetch_assoc($nom);
-									?>
         <div class="row">
             <div class="col-12">
                 <div class="card">

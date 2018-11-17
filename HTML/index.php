@@ -1,4 +1,7 @@
+<?php  
+	include('../php/sessao.php');
 
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,8 +16,8 @@
 
 </head>
 <body class="cor-pg">
-				<nav class="navbar navbar-expand-lg navbar-light cor-nav">
-				  <a class="navbar-brand text-dark" href="index.html">Home</a>
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				  <a class="navbar-brand" href="index.html">Home</a>
 				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				    <span class="navbar-toggler-icon"></span>
 				  </button>
@@ -22,28 +25,31 @@
 				  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 				    <ul class="navbar-nav mr-auto">
 				      <li class="nav-item active">
-				        <a class="nav-link text-dark" href="Login.php">Login<span class="sr-only">(current)</span></a>
+				        <a class="nav-link" href="Perfil.php">Perfil<span class="sr-only">(current)</span></a>
 				      </li>
 				      <li class="nav-item">
-				        <a class="nav-link text-dark" href="Rank.html">Ranking</a>
+				        <a class="nav-link" href="Rank.html">Ranking</a>
 				      </li>
 				      <li class="nav-item dropdown">
-				        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				          Duvidas
 				        </a>
 				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				          <a class="dropdown-item text-dark" href="Resul_busc.html">Procurar Duvidas</a>
+				          <a class="dropdown-item" href="lanc_duvida.html">Lançar Duvida</a>
+				          <a class="dropdown-item" href="duv_lanc.html">Duvidas Lancadas</a>
+				          <a class="dropdown-item" href="resp_lanc.html">Respostas Lancadas</a>
+				          <div class="dropdown-divider"></div>
+				          <a class="dropdown-item" href="Resul_busc.html">Procurar Duvidas</a>
 				        </div>
 				      </li>
 				      <li class="nav-item">
-				        <a class="nav-link disabled text-dark" href="Cadastro.php">Cadastro</a>
+				        <a class="nav-link disabled" href="Cadastro.php">Cadastro</a>
 				      </li>
 				    </ul>
 				    <form class="form-inline my-2 my-lg-0">
-				      <input class="form-control mr-sm-2 cor-bot " type="search" placeholder="Busca" aria-label="Search">
-				      <button class="btn active cor-bot" type="submit"><a href="login.php">Entre</a></button>
+				      <input class="form-control mr-sm-2" type="search" placeholder="Busca" aria-label="Search">
+				      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" href="login.php">ENTRE!</button>
 				    </form>
-				  </div>
 				  </div>
 				</nav>
 	<section>

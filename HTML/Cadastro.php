@@ -1,7 +1,4 @@
-<?php 
-	include_once '../php/codigos.php';
-	$c = new Cadastro;
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +11,18 @@
 	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/java.js"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="../Img/Logo1.jpg">
+	<script>
+	function validarSenha(form){ 
+    senha = document.formulario.Senha.value
+    senhaRepetida = document.formulario.conf_Senha.value
+    if (senha != senhaRepetida){
+        alert("Repita a senha corretamente");
+        document.formulario.conf_Senha.focus();  
+        return false;
+    }
+	}
+</script>
 </head>
 <body>
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -54,46 +63,43 @@
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 			<div class="wrapper">
 			  <h1>Registre-se!</h1>
-			  <p>Seu cadastro é fundamental e Obrigatório para que você possa lançar ou responder alguma dúvida!</p>
-			  <form class="form" method="post" action="Cadastro.php">
-			  	  <input type="text" name="cpd" class="name" placeholder="CPD">
+			  <p>Seu cadastro é fundamental e obrigatório para que você possa lançar ou responder alguma dúvida!</p>
+			  <form class="form" method="post" action="../php/codigos.php" name="formulario">
+			  	  <input maxlength="5" type="text" name="cpd" size="5" class="name" placeholder="CPD" required="required">
 			    <div>
 			      <p class="name-help">Por favor informe seu cpd.</p>
 			    </div>
-			    <input type="text" name="nome" class="name" placeholder="Nome">
+			    <input type="text" name="nome" class="name" placeholder="Nome" required="required" minlength="4" maxlength="255">
 			    <div>
 			      <p class="name-help">Por favor informe seu nome completo.</p>
 			    </div>
-			    <input type="text" name="Telefone" class="name" placeholder="Telefone">
+			    <input type="text" name="Telefone" class="name" placeholder="Telefone" required="required" minlength="11" maxlength="11">
 			    <div>
 			      <p class="name-help">Por favor informe seu nome completo.</p>
 			    </div>
-			    <input type="text" name="Curso" class="name" placeholder="Curso">
+			    <input type="text" name="Curso" class="name" placeholder="Curso" required="required" maxlength="1" size="1">
 			    <div>
 			      <p class="name-help">Por favor informe seu curso.</p>
 			    </div>
-			    <input type="text" name="semestre" class="name" placeholder="Semestre">
+			    <input type="text" name="semestre" class="name" placeholder="Semestre" required="required" maxlength="2" size="2">
 			    <div>
 			      <p class="name-help">Por favor informe seu curso.</p>
 			    </div>
-			    <input type="password" name="Senha" class="name" placeholder="Senha">
+			    <input minlength="6" maxlength="12" type="password" name="Senha" class="name" placeholder="Senha" required="required">
 			    <div>
-			      <p class="name-help">Por favor informe seu nome completo.</p>
+			      <p class="name-help">Por Favor Informe sua Senha</p>
 			    </div>
-			    <input type="password" name="conf_Senha" class="name" placeholder="Confirmar Senha">
+			    <input minlength="6" maxlength="12" type="password" name="conf_Senha" class="name" placeholder="Confirmar Senha" required="required">
 			    <div>
-			      <p class="name-help">Por favor informe seu nome completo.</p>
+			      <p class="name-help">Confirme Sua senha</p>
 			    </div>
-			    <input type="email" name="Email" class="Email" placeholder="Email">
+
+			    <input type="email" name="Email" class="Email" placeholder="Email" required="required">
 			     <div>
 			      <p class="email-help">Please enter your current email address.</p>
 			    </div>
-			    <input type="submit" class="submit" value="Cadastrar">
+			    <input type="submit" class="submit" value="Cadastrar" onClick="validarSenha()">
 			  </form>
-			  <?php
-			  $c->RecCadastrar($_POST['cpd'], $_POST['nome'], $_POST['Curso'], $_POST['semestre'], $_POST['Telefone'], $_POST['Email'], $_POST['Senha'], $_POST['conf_Senha']);
-			  $c->EnvCadastro();
-			  ?>
 		</div>
 </div>
 </body>
