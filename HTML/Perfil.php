@@ -68,7 +68,7 @@
                                          ?>
                                                 	
                                      </a></h2>
-                                    <h6 class="d-block"><a href="javascript:void(0)"></a> IzPoints</h6>
+                                    <h6 class="d-block"><a href="javascript:void(0)"></a> IzPoints <?php echo $user['IzCoins']; ?></h6>
                                     <h6 class="d-block"><a href="javascript:void(0)"></a> Perguntas Respondidas</h6>
                                 </div>
                                 <div class="ml-auto">

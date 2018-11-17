@@ -35,7 +35,7 @@
 				          Duvidas
 				        </a>
 				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				          <a class="dropdown-item" href="lanc_duvida.html">Lançar Duvida</a>
+				          <a class="dropdown-item" href="lanc_duvida.php">Lançar Duvida</a>
 				          <a class="dropdown-item" href="duv_lanc.html">Duvidas Lancadas</a>
 				          <a class="dropdown-item" href="resp_lanc.html">Respostas Lancadas</a>
 				          <div class="dropdown-divider"></div>

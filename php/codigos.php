@@ -21,8 +21,7 @@
                         echo ("<script>alert('Cadastro Não Efetuado, tente novamente!!'); location.href='../html/cadastro.php';</script>");
             
             }else{
-                echo "string";
-                    echo ("<script>alert('Cadastro Efetuado com Sucesso!!'); location.href='../html/Index.html';</script>");
+                    echo ("<script>alert('Cadastro Efetuado com Sucesso!!'); location.href='../html/Index.php';</script>");
             }
         }
 

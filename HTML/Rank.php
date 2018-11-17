@@ -1,14 +1,5 @@
 <?php
-    $daniel = mysqli_connect("localhost","root","1234","iz4you");
-    if(mysqli_connect_errno()){
-        die("Conexao Falhou: ". mysqli_connect_errno);
-        
-    }
-		$cursos = "SELECT * FROM curso";
-		$listaCursos = mysqli_query($daniel, $cursos);
-		if(!$listaCursos){
-			die("Sem cursos");
-		}
+	include('');
 ?>
 <!DOCTYPE html>
 <html>
