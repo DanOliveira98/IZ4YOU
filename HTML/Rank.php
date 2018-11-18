@@ -69,6 +69,7 @@
 		</form>
 		<div class="row">
 			<?php
+			include('../php/rank.php');
 			$bus = mysqli_fetch_assoc($ins_m);
 			?>
 			<p><?php echo $bus['Nome'];?></p>
