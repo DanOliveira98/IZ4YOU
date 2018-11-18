@@ -1,5 +1,5 @@
 <?php
-	include('');
+	include('../php/rank.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -8,7 +8,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="../css/normalize.css">
-	<link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
@@ -51,21 +50,30 @@
 				  </div>
 				</nav>
 <div>
-		<form class="form" method="post">
-		<select id="curso">
-			<label for="cursos">Cursos</label>
-			<?php
-			while ($linha = mysqli_fetch_assoc($listaCursos)) {
-			?>
-			<option value="<?php echo $linha['CursoID']?>"></option>
-				<?php echo utf8_encode($linha['Nome'])?>
-			<?php
-
-		}
-			?>
+		<form action="rank.php" method="post">
+					<label for="cursos">Cursos</label>
+						<select id="cursos" name="curso"> 
+                        <?php 
+                            while($linha = mysqli_fetch_assoc($ins)) {
+                        ?>
+                            <option>
+                                <?php echo utf8_encode($linha["Nome"]) ?>
+                            </option>
+                        <?php
+                        ?>                     
+                        <?php 
+                                }
+                         ?>
+                     </select>
 			<input type="submit" class="submit" value="Ver Rank">
-		</select>
 		</form>
+		<div class="row">
+			<?php
+			$bus = mysqli_fetch_assoc($ins_m);
+			?>
+			<p><?php echo $bus['Nome'];?></p>
+			<p><?php echo $bus['IzCoins'];?></p>
+		</div>
 	</div>
 </body>
 </html>

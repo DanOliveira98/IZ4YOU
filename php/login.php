@@ -19,5 +19,4 @@
 
       }
       $ses = $_SESSION['usuario'];
-
 ?>	

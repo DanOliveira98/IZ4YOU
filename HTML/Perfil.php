@@ -1,5 +1,6 @@
 <?php
     include('../php/sessao_usuario.php');
+    include('../php/perfil.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,9 +23,6 @@
 
 				  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 				    <ul class="navbar-nav mr-auto">
-				      <li class="nav-item active">
-				        <a class="nav-link" href="Perfil.html">Perfil<span class="sr-only">(current)</span></a>
-				      </li>
 				      <li class="nav-item">
 				        <a class="nav-link" href="Rank.html">Ranking</a>
 				      </li>
@@ -33,17 +31,13 @@
 				          Duvidas
 				        </a>
 				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				          <a class="dropdown-item" href="lanc_duvida.html">Lançar Duvida</a>
-				          <a class="dropdown-item" href="duv_lanc.html">Duvidas Lancadas</a>
-				          <a class="dropdown-item" href="resp_lanc.html">Respostas Lancadas</a>
-				          <div class="dropdown-divider"></div>
-				          <a class="dropdown-item" href="Resul_busc.html">Procurar Duvidas</a>
+				          <a class="dropdown-item" href="lanc_duvida.php">Lançar Duvida</a>
 				        </div>
 				      </li>
 				    </ul>
 				    <form class="form-inline my-2 my-lg-0">
 				      <input class="form-control mr-sm-2" type="search" placeholder="Busca" aria-label="Search">
-				      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="index.html">Home</a></button>
+				      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="index.php">Home</a></button>
 				    </form>
 				  </div>
 				</nav>
@@ -102,10 +96,10 @@
 
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Data de Nascimento</label>
+                                                <label style="font-weight:bold;">Curso</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                March 22, 1994.
+                                                
                                             </div>
                                         </div>
                                         <hr />

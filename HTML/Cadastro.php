@@ -1,4 +1,7 @@
+<?php
+	include('../php/rank.php');
 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,10 +80,32 @@
 			    <div>
 			      <p class="name-help">Por favor informe seu nome completo.</p>
 			    </div>
-			    <input type="text" name="Curso" class="name" placeholder="Curso" required="required" maxlength="1" size="1">
 			    <div>
-			      <p class="name-help">Por favor informe seu curso.</p>
-			    </div>
+						<select name="curso" class="name format-select"> 
+                        <?php 
+                        	$meucurso = $busc["CursoID"];
+                            while($linha = mysqli_fetch_assoc($ins)){
+                            	$c_p = $linha["CursoID"];
+                            	if($meucurso == $c_p){
+                        ?>
+                            <option class="name">
+                                <?php echo utf8_encode($linha["Nome"]) ?>
+                            </option>
+                            <div>
+                            	<p class="name-help">Por favor informe seu Curso.</p>
+                        	</div>
+                        	<?php
+                        	}else{
+                        	?>  
+                        	 <option class="name">
+                                <?php echo utf8_encode($linha["Nome"]) ?>
+                            </option>                   
+                        	<?php 
+                                }
+                            }
+                         ?>
+                		</select>
+            	</div>
 			    <input type="text" name="semestre" class="name" placeholder="Semestre" required="required" maxlength="2" size="2">
 			    <div>
 			      <p class="name-help">Por favor informe seu curso.</p>

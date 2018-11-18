@@ -72,7 +72,7 @@ p{
   margin-bottom: 10px;
 }
 
-input[type="text"],input[type="email"],input[type="password"]{
+input[type="text"],input[type="email"],input[type="password"], select{
   width:98%;
   padding:15px 0px 15px 8px;
   border-radius:5px;
@@ -83,6 +83,9 @@ input[type="text"],input[type="email"],input[type="password"]{
   margin-bottom:10px;
   color:#6E6E6E;
   text-shadow:#000 0px 1px 5px;
+}
+.format-select{
+  margin-bottom:10px;
 }
 
 input[type="submit"]{
@@ -108,7 +111,6 @@ input[type="submit"]{
   border-top:1px solid rgba(255,255,255,0.8)!important;
   -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255,255,255,0.2)));
 }
-
 input:focus{
   box-shadow:inset 4px 6px 10px -4px rgba(0,0,0,0.7), 0 1px 1px -1px rgba(255,255,255,0.3);
   background:rgba(0,0,0,0.3);
