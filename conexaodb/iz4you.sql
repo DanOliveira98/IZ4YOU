@@ -11,7 +11,7 @@
  Target Server Version : 100136
  File Encoding         : 65001
 
- Date: 17/11/2018 18:42:10
+ Date: 17/11/2018 22:36:09
 */
 
 SET NAMES utf8mb4;
@@ -29,18 +29,6 @@ CREATE TABLE `curso`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Table structure for duvida
--- ----------------------------
-DROP TABLE IF EXISTS `duvida`;
-CREATE TABLE `duvida`  (
-  `Descricao` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `DuvidaID` int(11) NOT NULL AUTO_INCREMENT,
-  `IDCurso` int(11) NOT NULL,
-  `DisciplinaID` int(11) NOT NULL,
-  PRIMARY KEY (`DuvidaID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
-
--- ----------------------------
 -- Table structure for pergunta
 -- ----------------------------
 DROP TABLE IF EXISTS `pergunta`;
@@ -48,10 +36,13 @@ CREATE TABLE `pergunta`  (
   `idPergunta` int(11) NOT NULL AUTO_INCREMENT,
   `Descricao` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `idUsuario` int(11) NOT NULL,
+  `idCurso` int(11) NOT NULL,
   PRIMARY KEY (`idPergunta`) USING BTREE,
   INDEX `idUsuario`(`idUsuario`) USING BTREE,
-  CONSTRAINT `idUsuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`usuarioID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+  INDEX `idCurso`(`idCurso`) USING BTREE,
+  CONSTRAINT `idUsuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`usuarioID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `idCurso` FOREIGN KEY (`idCurso`) REFERENCES `curso` (`CursoID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for resposta
@@ -59,11 +50,14 @@ CREATE TABLE `pergunta`  (
 DROP TABLE IF EXISTS `resposta`;
 CREATE TABLE `resposta`  (
   `idResposta` int(11) NOT NULL,
-  `descricao` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `descricao` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `idPergunta` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
   PRIMARY KEY (`idResposta`) USING BTREE,
   INDEX `idPergunta`(`idPergunta`) USING BTREE,
-  CONSTRAINT `idPergunta` FOREIGN KEY (`idPergunta`) REFERENCES `pergunta` (`idPergunta`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `idUser`(`idUsuario`) USING BTREE,
+  CONSTRAINT `idPergunta` FOREIGN KEY (`idPergunta`) REFERENCES `pergunta` (`idPergunta`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `idUser` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`usuarioID`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -86,6 +80,6 @@ CREATE TABLE `usuario`  (
   INDEX `usuarioID`(`usuarioID`) USING BTREE,
   INDEX `CusoID`(`CursoID`) USING BTREE,
   CONSTRAINT `CusoID` FOREIGN KEY (`CursoID`) REFERENCES `curso` (`CursoID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 SET FOREIGN_KEY_CHECKS = 1;

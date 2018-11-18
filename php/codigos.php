@@ -1,5 +1,6 @@
 <?php
         include ('conexao.php');
+        include('sessao_usuario.php');
         $cpd = $_POST['cpd'];
         $idcurso = $_POST['Curso'];
         $telefone = $_POST['Telefone'];
