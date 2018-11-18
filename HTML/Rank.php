@@ -50,31 +50,40 @@
 				  </div>
 				</nav>
 <div>
-		<form action="rank.php" method="post">
+		<form method="post">
 					<label for="cursos">Cursos</label>
 						<select id="cursos" name="curso"> 
-                        <?php 
-                            while($linha = mysqli_fetch_assoc($ins)) {
+                         <?php 
+                        	$meucurso = $busc["CursoID"];
+                            while($linha = mysqli_fetch_assoc($ins)){
+                            	$c_p = $linha["CursoID"];
+                            	if($meucurso == $c_p){
                         ?>
-                            <option>
+                            <option class="name">
                                 <?php echo utf8_encode($linha["Nome"]) ?>
                             </option>
-                        <?php
-                        ?>                     
-                        <?php 
+                            <div>
+                            	<p class="name-help">Por favor informe seu Curso.</p>
+                        	</div>
+                        	<?php
+                        	}else{
+                        	?>  
+                        	 <option class="name">
+                                <?php echo utf8_encode($linha["Nome"]) ?>
+                            </option>                   
+                        	<?php 
                                 }
+                            }
                          ?>
                      </select>
 			<input type="submit" class="submit" value="Ver Rank">
 		</form>
-		<div class="row">
 			<?php
-			include('../php/rank.php');
+			include('../php/busc_rank.php');
 			$bus = mysqli_fetch_assoc($ins_m);
 			?>
 			<p><?php echo $bus['Nome'];?></p>
 			<p><?php echo $bus['IzCoins'];?></p>
-		</div>
 	</div>
 </body>
 </html>
