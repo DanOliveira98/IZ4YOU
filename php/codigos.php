@@ -9,7 +9,6 @@
         $_senha = $_POST['Senha'];      
         $nome = $_POST['nome'];
     	$senha = md5($_senha);
-
         $c = "SELECT * FROM curso where Nome = '$idcurso'";
         $tstc = mysqli_query($co, $c);
         $testc = mysqli_fetch_assoc($tstc);
@@ -22,7 +21,6 @@
             echo ("<script>alert('Cadastro Não Efetuado, tente novamente!!'); location.href='../html/cadastro.php';</script>");
         }else{
         $inserir = "INSERT INTO usuario(CPD, Nome, Semestre, Telefone, Email, Senha, CursoID) VALUES ($cpd, '$nome', $semestre, '$telefone', '$email', '$senha', $cursoid)";
-        echo $idcurso;
         $env = mysqli_query($co, $inserir) or die("error");
         $row = mysqli_num_rows($env);
             if($row == 1){
