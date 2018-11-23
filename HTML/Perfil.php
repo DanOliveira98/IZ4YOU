@@ -9,22 +9,24 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/perfil.css">
     <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="../Img/Logo1.jpg">
 
 </head>
-<body>
-				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<body class="cor-pg">
+				<nav class="navbar navbar-expand-lg navbar-light cor-nav">
 				  <a class="navbar-brand" href="index.php">Home</a>
 				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				    <span class="navbar-toggler-icon"></span>
 				  </button>
-
+        
 				  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 				    <ul class="navbar-nav mr-auto">
 				      <li class="nav-item">
-				        <a class="nav-link" href="Rank.html">Ranking</a>
+				        <a class="nav-link" href="Rank.php">Ranking</a>
 				      </li>
 				      <li class="nav-item dropdown">
 				        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -42,15 +44,15 @@
 				  </div>
 				</nav>
 <div class="container">
+    <div class="">
         <div class="row">
             <div class="col-12">
                 <div class="card">
-
                     <div class="card-body">
                         <div class="card-title mb-4">
                             <div class="d-flex justify-content-start">
                                 <div class="image-container">
-                                    <img src="http://placehold.it/150x150" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                                    <img src="../img/logo1.jpg" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
                                     <div class="middle">
                                         <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" />
                                         <input type="file" style="display: none;" id="profilePicture" name="file" />
@@ -58,11 +60,11 @@
                                 </div>
                                 <div class="userData ml-3">
                                     <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);"><?php 
-                                                  echo $user['Nome']; 
+                                                  echo $user['n']; 
                                          ?>
                                                 	
                                      </a></h2>
-                                    <h6 class="d-block"><a href="javascript:void(0)"></a> IzPoints <?php echo $user['IzCoins']; ?></h6>
+                                    <h6 class="d-block"><a href="javascript:void(0)"></a> IzPoints <?php echo $user['p']; ?></h6>
                                     <h6 class="d-block"><a href="javascript:void(0)"></a> Perguntas Respondidas</h6>
                                 </div>
                                 <div class="ml-auto">
@@ -87,7 +89,7 @@
                                             </div>
                                             <div class="col-md-8 col-6">
                                                 <?php 
-                                                  echo $user['Nome']; 
+                                                  echo $user['n']; 
                                                 ?>
                                             </div>
                                         </div>
@@ -99,7 +101,7 @@
                                                 <label style="font-weight:bold;">Curso</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                
+                                            <?php echo $user['c'];?>
                                             </div>
                                         </div>
                                         <hr />
@@ -107,31 +109,33 @@
                                         
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Mais informações</label>
+                                                <label style="font-weight:bold;">Semestre</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                Mais Informações
+                                                <?php echo $user['s'];?>
                                             </div>
                                         </div>
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Mais Informações</label>
+                                                <label style="font-weight:bold;">Telefone</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                Mais Informações
+                                                <?php echo $user['t'];?>
                                             </div>
                                         </div>
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Mais Informações</label>
+                                                <label style="font-weight:bold;">Email</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                Mais Informações
+                                                <?php echo $user['e'];?>
                                             </div>
                                         </div>
                                         <hr />
+                                        <button type="submit" class="btn btn-primary mb-2 bg-light"><a href="Altercadastro.php">Editar Dados</a></button>
+                                        <button type="submit" class="btn btn-primary mb-2 bg-light"><a href="Deletaruser.php">Deletar Usuario</a></button>
                                     </div>
                                 </div>
                             </div>
@@ -141,5 +145,6 @@
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>

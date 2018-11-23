@@ -1,7 +1,3 @@
-<?php
-	include('../php/rank.php');
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,67 +53,20 @@
 		<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 			<div class="wrapper">
-			  <h1>Registre-se!</h1>
-			  <p>Seu cadastro é fundamental e obrigatório para que você possa lançar ou responder alguma dúvida!</p>
-			  <form class="form" method="post" action="../php/codigos.php" name="formulario">
+			  <h1>Exclusão Usuario</h1>
+			  <p>Informe seu Cpd e Senha para ser efetuado a exclusão!</p>
+			  <form class="form" method="post" action="../php/deletaruser.php" name="formulario">
 			  	  <input maxlength="5" type="text" name="cpd" size="5" class="name" placeholder="CPD" required='true'>
 			    <div>
 			      <p class="name-help">Por favor informe seu cpd.</p>
-			    </div>
-			    <input type="text" name="nome" class="name" placeholder="Nome" required="required" minlength="4" maxlength="255">
+			    </div>			  	 
+			     <input maxlength="12" type="password" name="Senha" size="12" class="name" placeholder="Senha" required='true'>
 			    <div>
-			      <p class="name-help">Por favor informe seu nome completo.</p>
-			    </div>
-			    <input type="text" name="Telefone" class="name" placeholder="Telefone" required="required" minlength="11" maxlength="11">
-			    <div>
-			      <p class="name-help">Por favor informe seu nome completo.</p>
-			    </div>
-			    <div>
-						<select name="curso" class="name format-select"> 
-                        <?php 
-                        	$meucurso = $busc["CursoID"];
-                            while($linha = mysqli_fetch_assoc($ins)){
-                            	$c_p = $linha["CursoID"];
-                            	if($meucurso == $c_p){
-                        ?>
-                            <option class="name">
-                                <?php echo utf8_encode($linha["Nome"]) ?>
-                            </option>
-                            <div>
-                            	<p class="name-help">Por favor informe seu Curso.</p>
-                        	</div>
-                        	<?php
-                        	}else{
-                        	?>  
-                        	 <option class="name">
-                                <?php echo utf8_encode($linha["Nome"]) ?>
-                            </option>                   
-                        	<?php 
-                                }
-                            }
-                         ?>
-                		</select>
-            	</div>
-			    <input type="text" name="semestre" class="name" placeholder="Semestre" required="required" maxlength="2" size="2">
-			    <div>
-			      <p class="name-help">Por favor informe seu curso.</p>
-			    </div>
-			    <input minlength="6" maxlength="12" type="password" name="Senha" class="name" placeholder="Senha" required="required">
-			    <div>
-			      <p class="name-help">Por Favor Informe sua Senha</p>
+			      <p class="name-help">Por favor informe seu cpd.</p>
 			    </div>
 			    <input minlength="6" maxlength="12" type="password" name="conf_Senha" class="name" placeholder="Confirmar Senha" required="required">
 			    <div>
 			      <p class="name-help">Confirme Sua senha</p>
 			    </div>
-
-			    <input type="email" name="Email" class="Email" placeholder="Email" required="required">
-			     <div>
-			      <p class="email-help">Please enter your current email address.</p>
-			    </div>
-			    <input type="submit" class="submit" value="Cadastrar" onClick="validarSenha()">
-			  </form>
-		</div>
-</div>
-</body>
-</html>
+			    <input type="submit" class="submit" value="Deletar" onClick="validarSenha()">
+			</form>
